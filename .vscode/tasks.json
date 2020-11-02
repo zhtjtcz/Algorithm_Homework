@@ -1,0 +1,36 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+
+            "args": [
+                "-g",
+                "-std=c++11",
+//	error?		"-Wl",
+//	error?		"-stack=102400000",
+//               "-Wshadow",
+                "-Wswitch",
+                "-Wuninitialized",
+                "-Wmaybe-uninitialized",
+                "-Wformat",
+                "-Wreturn-type",
+                "-Wparentheses",
+                "-Wunused-parameter",
+                "-Wunused-but-set-parameter",
+                "-Wfloat-equal",
+                "-Wsizeof-pointer-memaccess",
+                "-Waddress",
+                "-Warray-bounds",
+                "-Wempty-body",
+                "${file}",
+                "-o",
+                "${file}.exe"
+            ],
+        }
+    ]
+}
