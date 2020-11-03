@@ -7,8 +7,6 @@ from PyQt5.QtGui import *
 class MainWindows(QMainWindow):
 	def Simple(self):
 		self.simmap=WatchWindows()
-		self.simmap.map=Map(5,0.5)
-		self.simmap.map.CreateNolmalMap()
 		self.simmap.show()
 		self.close()
 		# self.map.Draw()
