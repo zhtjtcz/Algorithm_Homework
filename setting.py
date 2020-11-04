@@ -21,7 +21,8 @@ class PrettyWidget(QWidget):
 		self.setWindowTitle('S Plot')
 		grid=QGridLayout()
 		self.setLayout(grid)
-		self.createVerticalGroupBox() 
+		
+		self.createVerticalGroupBox()
 
 		buttonLayout=QVBoxLayout()
 		buttonLayout.addWidget(self.verticalGroupBox)
