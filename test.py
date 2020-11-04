@@ -13,7 +13,7 @@ class Test(QWidget):
 		font=QFont()
 		font.setPointSize(16)
 		self.initUI()
-	
+
 	def center(self):
 		qr=self.frameGeometry()
 		cp=QDesktopWidget().availableGeometry().center()
@@ -34,11 +34,24 @@ class Test(QWidget):
 
 	def Show(self):
 		self.figure.clf()
-		B=nx.Graph()
-		B.add_nodes_from([1, 2, 3, 4], bipartite=0)
-		B.add_nodes_from(['a', 'b', 'c', 'd', 'e'], bipartite=1)
-		B.add_edges_from([(1, 'a'), (2, 'c'), (3, 'd'), (3, 'e'), (4, 'e'), (4, 'd')])
-		nx.draw(B)
+		G=nx.Graph()
+		G.add_nodes_from([1, 2, 3, 4], bipartite=0)
+		G.add_nodes_from(['a', 'b', 'c', 'd', 'e'], bipartite=1)
+		G.add_edges_from([(1, 'a'), (2, 'c'), (3, 'd'), (3, 'e'), (4, 'e'), (4, 'd')])
+		edges_dic={(1,'a'):5,(2,'c'):7}
+		#nx.draw(B)
+		
+		pos=nx.spring_layout(G)
+		nx.draw_networkx_nodes(G,pos,node_size=500)
+		
+		cols=[]	
+		for i in G.edges(data=True):
+			cols.append('r')
+
+		nx.draw_networkx_edges(G,pos,width=3,edge_color=cols)
+		nx.draw_networkx_labels(G,pos)
+		nx.draw_networkx_edge_labels(G, pos,edges_dic,font_size=10)
+		
 		self.canvas.draw_idle()
 		self.show()
 
