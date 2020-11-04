@@ -1,8 +1,8 @@
 import sys
-from PyQt5.QtWidgets import *
 from mainwin import *
 from sonwindow import *
 from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 def WatchWindows_test():
 	app=QApplication(sys.argv)

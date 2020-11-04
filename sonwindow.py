@@ -18,7 +18,6 @@ class WatchWindows(QtWidgets.QMainWindow):
 		cavans=FigureCanvas(fig)
 		self.setCentralWidget(cavans)
 
-
 	def AddToolbar(self):
 		self.toolbar=self.addToolBar('Tools')
 		
@@ -42,11 +41,28 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.toolbar.addAction(SettingAct)
 		self.toolbar.addAction(ExitAct)
 
+	def Addbox(self):
+		self.box1=QGroupBox("Parameter Settings")
+		a=QRadioButton("Hello")
+		b=QRadioButton("World")
+		vbox=QVBoxLayout()
+		vbox.addWidget(a)
+		vbox.addWidget(b)
+		vbox.addStretch(1)
+		self.box1.setLayout(vbox)
+		self.grid.addWidget(self.box1,0,0)
+
+		wid=QWidget(self)
+		self.setCentralWidget(wid)
+		wid.setLayout(vbox)
+
 	def __init__(self):
 		super().__init__()
+		self.grid=QGridLayout()
 		self.map=Map(5,0.5)
 		self.map.CreateNolmalMap()
 		self.resize(800,800)
 		self.setWindowTitle("Simple Map")
 		self.AddToolbar()
 		self.setCentralWidget(QtWidgets.QWidget())
+		self.Addbox()

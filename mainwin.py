@@ -1,15 +1,14 @@
 import sys
-from PyQt5.QtWidgets import *
 from graph import *
 from sonwindow import *
 from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 class MainWindows(QMainWindow):
 	def Simple(self):
 		self.simmap=WatchWindows()
 		self.simmap.show()
 		self.close()
-		# self.map.Draw()
 
 	def Flow(self):
 		#TODO max-flow
