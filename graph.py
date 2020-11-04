@@ -120,4 +120,4 @@ class Map():
 		# TODO beautify
 		nx.draw_networkx_labels(self.G,pos)
 		nx.draw_networkx_edge_labels(self.G, pos,self.edges_dic,font_size=10)
-		plt.show()
+		# plt.show()

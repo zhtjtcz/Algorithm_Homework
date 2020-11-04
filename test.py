@@ -1,11 +1,15 @@
+import sys
+import networkx as nx
+
+from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
+
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-import networkx as nx
-import sys
+
+
 
 class Test(QWidget):
 	def __init__(self):
