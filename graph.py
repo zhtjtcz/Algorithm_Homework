@@ -109,6 +109,7 @@ class Map():
 				self.alpha.append(0.5)
 
 	def Draw(self):
+		plt.cla()
 		pos=nx.spring_layout(self.G)
 		nx.draw_networkx_nodes(self.G,pos,node_size=500)
 		if (self.cols == []):
@@ -121,5 +122,5 @@ class Map():
 		nx.draw_networkx_labels(self.G,pos)
 		nx.draw_networkx_edge_labels(self.G, pos,self.edges_dic,font_size=10)
 		#nx.write_gexf(self.G,'b.gexf')
-		plt.savefig("b.png",format="PNG") 
+		plt.savefig("b.png",format="PNG")
 		# plt.show()
