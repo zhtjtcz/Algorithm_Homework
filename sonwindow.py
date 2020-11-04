@@ -52,20 +52,33 @@ class WatchWindows(QtWidgets.QMainWindow):
 		pass
 
 	def Addbox(self):
-		self.box1=QGroupBox("Parameter Settings")
-		a=QRadioButton("Hello")
-		b=QRadioButton("World")
-		vbox=QVBoxLayout()
-		vbox.addWidget(a)
-		vbox.addWidget(b)
-		vbox.addStretch(1)
-		self.box1.setLayout(vbox)
-		self.grid.addWidget(self.box1,0,0)
+		self.Box=[]
+		self.Vbox=[]
+		self.RadioButton=[]
+		self.Box.append(QGroupBox("Node Color Settings"))
+		self.Vbox.append(QVBoxLayout())
+		for i in self.cols:
+			self.RadioButton.append(QRadioButton(i))
+			self.Vbox[0].addWidget(self.RadioButton[len(self.RadioButton)-1])
+		self.Vbox[0].addStretch(1)
+		self.Box[0].setLayout(self.Vbox[0])
 
-		self.wid=QWidget(self)
-		self.setCentralWidget(self.wid)
-		self.wid.setLayout(vbox)
-	
+		self.Box.append(QGroupBox("Edge Color Settings"))
+		self.Vbox.append(QVBoxLayout())
+		for i in self.cols:
+			self.RadioButton.append(QRadioButton(i))
+			self.Vbox[1].addWidget(self.RadioButton[len(self.RadioButton)-1])
+		self.Vbox[1].addStretch(1)
+		self.Box[1].setLayout(self.Vbox[1])
+
+		self.Box.append(QGroupBox("Path Color Settings"))
+		self.Vbox.append(QVBoxLayout())
+		for i in self.cols:
+			self.RadioButton.append(QRadioButton(i))
+			self.Vbox[2].addWidget(self.RadioButton[len(self.RadioButton)-1])
+		self.Vbox[2].addStretch(1)
+		self.Box[2].setLayout(self.Vbox[2])
+
 	def SetLayout(self):
 		self.main_widget=QWidget()
 		self.main_layout=QGridLayout()
@@ -98,8 +111,11 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.edgesnum.setPlaceholderText("Edges sum")
 		self.edgesnum.returnPressed.connect(self.empty)
 		self.left_layout.addWidget(self.edgesnum,2,0,1,5)
+		self.Addbox()
+		self.left_layout.addWidget(self.Box[0],3,0,1,5)
+		self.left_layout.addWidget(self.Box[1],4,0,1,5)
+		self.left_layout.addWidget(self.Box[2],5,0,1,5)
 
-	
 	def __init__(self):
 		super().__init__()
 		self.resize(1200,800)
@@ -109,6 +125,7 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.setWindowOpacity(0.9)
 		self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
+		self.cols=["Red","Blue","Yellow","Green","Black"]
 		self.map=Map(5,0.5)
 		self.map.CreateNolmalMap()
 		
