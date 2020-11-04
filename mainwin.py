@@ -19,8 +19,10 @@ class MainWindows(QMainWindow):
 		self.resize(500,500)
 		self.setWindowTitle("SeeGrary")
 		self.menu=self.menuBar()
+		self.setWindowIcon(QIcon('Icon/main.png'))
+		self.setWindowOpacity(0.9)
+		self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 		#Init
-		#TODO icon setting
 
 		Newmenu=self.menu.addMenu('New')
 		# Add a new root menu

@@ -29,18 +29,17 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.toolbar=self.addToolBar('Tools')
 		
 		WatchAct=QAction('Watch',self)
-		Icon_Watch=QIcon('a.png')
+		Icon_Watch=QIcon('Icon/test.png')
 		WatchAct.setIcon(Icon_Watch)
 		WatchAct.triggered.connect(lambda : self.Watch())
 
 		SettingAct=QAction('Setting',self)
-		Icon_Setting=QIcon('a.png')
+		Icon_Setting=QIcon('Icon/setting.png')
 		SettingAct.setIcon(Icon_Setting)
 
 		ExitAct=QAction('Exit',self)
-		Icon_Exit=QIcon('a.png')
+		Icon_Exit=QIcon('Icon/close.png')
 		ExitAct.setIcon(Icon_Exit)
-		#TODO icon beautify
 
 		ExitAct.triggered.connect(lambda : self.close())
 		
@@ -105,6 +104,7 @@ class WatchWindows(QtWidgets.QMainWindow):
 		super().__init__()
 		self.resize(1200,800)
 		self.setWindowTitle("Simple Map")
+		self.setWindowIcon(QIcon('Icon/main.png'))
 		self.center()
 		self.setWindowOpacity(0.9)
 		self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
