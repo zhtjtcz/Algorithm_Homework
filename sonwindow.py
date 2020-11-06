@@ -33,9 +33,10 @@ class WatchWindows(QtWidgets.QMainWindow):
 		WatchAct.setIcon(Icon_Watch)
 		WatchAct.triggered.connect(lambda : self.Watch())
 
-		SettingAct=QAction('Setting',self)
-		Icon_Setting=QIcon('Icon/setting.png')
+		SettingAct=QAction('Refresh',self)
+		Icon_Setting=QIcon('Icon/refresh.png')
 		SettingAct.setIcon(Icon_Setting)
+		SettingAct.triggered.connect(lambda : self.Watch())
 
 		ExitAct=QAction('Exit',self)
 		Icon_Exit=QIcon('Icon/close.png')
@@ -116,6 +117,8 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.left_layout.addWidget(self.Box[1],4,0,1,5)
 		self.left_layout.addWidget(self.Box[2],5,0,1,5)
 
+		
+
 	def __init__(self):
 		super().__init__()
 		self.resize(1200,800)
@@ -128,7 +131,7 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.cols=["Red","Blue","Yellow","Green","Black"]
 		self.map=Map(5,0.5)
 		self.map.CreateNolmalMap()
-		
+
 		self.AddToolbar()
 		self.SetLayout()
 
