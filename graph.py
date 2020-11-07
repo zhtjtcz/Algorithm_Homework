@@ -2,26 +2,39 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from random import randint
 from random import random as rand
+import cyaron
+from cyaron import *
 
 class Map():
-	def __init__(self,n,pho):
+	def __init__(self,n,m):
 		self.G=nx.MultiGraph()
 		self.n=n
-		self.p=1-pho
+		self.m=m
 		self.edges_dic={}
 		self.f=[i for i in range(n+1)]
 		self.cols=[]
 		self.alpha=[]
+		self.edge_col='bluep'
+		self.path_col='r'
+		self.node_col='black'
+
+	def ParametersChange(self,n_s,e_s,n_c,e_c,p_c):
+		
+		pass
 
 	def CreateNolmalMap(self):
-		for i in range(self.n):
-			for j in range(i+1,self.n):
-				x=rand()
-				if (x>=self.p):
-					l=randint(1,10)
-					self.G.add_edge(i,j,color='b')
-					self.edges_dic[(i,j)]=l
-					self.edges_dic[(j,i)]=l
+		graph=Graph.graph(self.n,self.m,weight_limit=10,self_loop=False,repeated_edges=False)
+		File=open('graph.in','w')
+		print(graph,file=File)
+		File.close()
+		File=open('graph.in','r')
+		for i in range(self.m):
+			x,y,l=map(int,File.readline().split())
+			x-=1
+			y-=1
+			self.G.add_edge(x,y,color=self.edge_col)
+			self.edges_dic[(x,y)]=l
+			self.edges_dic[(y,x)]=l
 		
 		for i in range(self.n):
 			self.G.add_edge(i,i,color='b')

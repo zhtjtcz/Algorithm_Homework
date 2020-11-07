@@ -52,6 +52,11 @@ class WatchWindows(QtWidgets.QMainWindow):
 		print('123')
 		pass
 
+	def btn_click(self):
+		
+		print(self.RadioButton[0].isChecked())
+		pass
+
 	def Addbox(self):
 		self.Box=[]
 		self.Vbox=[]
@@ -117,7 +122,9 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.left_layout.addWidget(self.Box[1],4,0,1,5)
 		self.left_layout.addWidget(self.Box[2],5,0,1,5)
 
-		
+		self.button=QPushButton("Submit")
+		self.button.clicked.connect(self.btn_click)
+		self.left_layout.addWidget(self.button,6,0,1,5)
 
 	def __init__(self):
 		super().__init__()
@@ -129,7 +136,7 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
 		self.cols=["Red","Blue","Yellow","Green","Black"]
-		self.map=Map(5,0.5)
+		self.map=Map(5,6)
 		self.map.CreateNolmalMap()
 
 		self.AddToolbar()
