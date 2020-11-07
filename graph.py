@@ -14,13 +14,9 @@ class Map():
 		self.f=[i for i in range(n+1)]
 		self.cols=[]
 		self.alpha=[]
+		self.node_col='red'
 		self.edge_col='blue'
 		self.path_col='red'
-		self.node_col='red'
-
-	def ParametersChange(self,n_s,e_s,n_c,e_c,p_c):
-		
-		pass
 
 	def CreateNolmalMap(self):
 		graph=Graph.graph(self.n,self.m,weight_limit=10,self_loop=False,repeated_edges=False)
@@ -126,6 +122,7 @@ class Map():
 		pos=nx.spring_layout(self.G)
 		nx.draw_networkx_nodes(self.G,pos,node_color=self.node_col,node_size=500)
 		if (self.cols == []):
+			print(self.edge_col)
 			for i in self.G.edges(data=True):
 				self.cols.append(self.edge_col)
 
@@ -134,6 +131,4 @@ class Map():
 		# TODO beautify
 		nx.draw_networkx_labels(self.G,pos)
 		nx.draw_networkx_edge_labels(self.G, pos,self.edges_dic,font_size=10)
-		# nx.write_gexf(self.G,'b.gexf')
 		plt.savefig("b.png",format="PNG")
-		# plt.show()

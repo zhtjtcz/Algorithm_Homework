@@ -53,8 +53,23 @@ class WatchWindows(QtWidgets.QMainWindow):
 		pass
 
 	def btn_click(self):
+		self.map=Map(5,6)
+
+		for i in range(0,5):
+			if (self.RadioButton[i].isChecked() == True):
+				self.map.node_col=self.cols[i]
 		
-		print(self.RadioButton[0].isChecked())
+		for i in range(5,10):
+			if (self.RadioButton[i].isChecked() == True):
+				self.map.edge_col=self.cols[i%5]
+		
+		for i in range(10,15):
+			if (self.RadioButton[i].isChecked() == True):
+				self.map.path_col=self.cols[i%5]
+		
+		self.map.CreateNolmalMap()
+
+		#TODO Button set
 		pass
 
 	def Addbox(self):
