@@ -14,9 +14,9 @@ class Map():
 		self.f=[i for i in range(n+1)]
 		self.cols=[]
 		self.alpha=[]
-		self.edge_col='bluep'
-		self.path_col='r'
-		self.node_col='black'
+		self.edge_col='blue'
+		self.path_col='red'
+		self.node_col='red'
 
 	def ParametersChange(self,n_s,e_s,n_c,e_c,p_c):
 		
@@ -37,7 +37,7 @@ class Map():
 			self.edges_dic[(y,x)]=l
 		
 		for i in range(self.n):
-			self.G.add_edge(i,i,color='b')
+			self.G.add_edge(i,i,color=self.edge_col)
 
 	def Find(self,x):
 		if (x==self.f[x]):
@@ -94,7 +94,7 @@ class Map():
 		v[0]=1
 		for i in self.G.edges(data=True):
 			if (v[i[0]] and v[i[1]] and (fr[i[1]]==i[0] or fr[i[0]]==i[1])):
-				self.cols.append('r')
+				self.cols.append(self.path_col)
 			else:
 				self.cols.append(i[2]['color'])
 
@@ -115,7 +115,7 @@ class Map():
 		print(tot)
 		for i in self.G.edges(data=True):
 			if ((i[0],i[1]) in cse or (i[1],i[0]) in  cse):
-				self.cols.append('r')
+				self.cols.append(self.path_col)
 				self.alpha.append(1)
 			else:
 				self.cols.append(i[2]['color'])
@@ -124,11 +124,11 @@ class Map():
 	def Draw(self):
 		plt.cla()
 		pos=nx.spring_layout(self.G)
-		nx.draw_networkx_nodes(self.G,pos,node_size=500)
+		nx.draw_networkx_nodes(self.G,pos,node_color=self.node_col,node_size=500)
 		if (self.cols == []):
 			for i in self.G.edges(data=True):
-				self.cols.append('r')
-		
+				self.cols.append(self.edge_col)
+
 		nx.draw_networkx_edges(self.G,pos,width=3,edge_color=self.cols)
 		# TODO alpha-setting
 		# TODO beautify
