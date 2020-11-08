@@ -25,9 +25,21 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.map.Draw()
 		self.mappic.setPixmap(QPixmap('b.png'))
 
+	def ShortPath(self):
+		self.map.ShortestPath()
+		self.mappic.clear()
+		self.map.Draw()
+		self.mappic.setPixmap(QPixmap('b.png'))
+	
+	def Tree(self):
+		self.map.CreateTree()
+		self.mappic.clear()
+		self.map.Draw()
+		self.mappic.setPixmap(QPixmap('b.png'))
+
 	def AddToolbar(self):
 		self.toolbar=self.addToolBar('Tools')
-		
+
 		WatchAct=QAction('Watch',self)
 		Icon_Watch=QIcon('Icon/test.png')
 		WatchAct.setIcon(Icon_Watch)
@@ -38,6 +50,16 @@ class WatchWindows(QtWidgets.QMainWindow):
 		SettingAct.setIcon(Icon_Setting)
 		SettingAct.triggered.connect(lambda : self.Watch())
 
+		FindPathAct=QAction('Find Shortest Path',self)
+		Icon_Path=QIcon('Icon/shortpath.png')
+		FindPathAct.setIcon(Icon_Path)
+		FindPathAct.triggered.connect(lambda : self.ShortPath())
+
+		TreeAct=QAction('Find Spanning Tree',self)
+		Icon_Tree=QIcon('Icon/tree.png')
+		TreeAct.setIcon(Icon_Tree)
+		TreeAct.triggered.connect(lambda : self.Tree())
+
 		ExitAct=QAction('Exit',self)
 		Icon_Exit=QIcon('Icon/close.png')
 		ExitAct.setIcon(Icon_Exit)
@@ -46,6 +68,8 @@ class WatchWindows(QtWidgets.QMainWindow):
 		
 		self.toolbar.addAction(WatchAct)
 		self.toolbar.addAction(SettingAct)
+		self.toolbar.addAction(FindPathAct)
+		self.toolbar.addAction(TreeAct)
 		self.toolbar.addAction(ExitAct)
 
 	def empty(self):

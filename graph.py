@@ -13,7 +13,6 @@ class Map():
 		self.edges_dic={}
 		self.f=[i for i in range(n+1)]
 		self.cols=[]
-		self.alpha=[]
 		self.node_col='red'
 		self.edge_col='blue'
 		self.path_col='red'
@@ -88,6 +87,7 @@ class Map():
 			v[x]=1
 			x=fr[x]
 		v[0]=1
+		self.cols=[]
 		for i in self.G.edges(data=True):
 			if (v[i[0]] and v[i[1]] and (fr[i[1]]==i[0] or fr[i[0]]==i[1])):
 				self.cols.append(self.path_col)
@@ -99,7 +99,6 @@ class Map():
 		lit=sorted(self.edges_dic.items(), key=lambda d:d[1])
 		cse={}
 		tot=0
-		#print(lit)
 		for i in lit:
 			x=self.Find(i[0][0])
 			y=self.Find(i[0][1])
@@ -109,20 +108,18 @@ class Map():
 			self.f[x]=y
 			tot+=i[1]
 		print(tot)
+		self.cols=[]
 		for i in self.G.edges(data=True):
 			if ((i[0],i[1]) in cse or (i[1],i[0]) in  cse):
 				self.cols.append(self.path_col)
-				self.alpha.append(1)
 			else:
 				self.cols.append(i[2]['color'])
-				self.alpha.append(0.5)
 
 	def Draw(self):
 		plt.cla()
 		pos=nx.spring_layout(self.G)
 		nx.draw_networkx_nodes(self.G,pos,node_color=self.node_col,node_size=500)
 		if (self.cols == []):
-			print(self.edge_col)
 			for i in self.G.edges(data=True):
 				self.cols.append(self.edge_col)
 
