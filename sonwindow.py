@@ -53,7 +53,9 @@ class WatchWindows(QtWidgets.QMainWindow):
 		pass
 
 	def btn_click(self):
-		self.map=Map(5,6)
+		n=(int)(self.nodesnum.text().strip())
+		m=(int)(self.edgesnum.text().strip())
+		self.map=Map(n,m)
 
 		for i in range(0,5):
 			if (self.RadioButton[i].isChecked() == True):
@@ -123,10 +125,10 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.mappic=QLabel()
 		self.right_layout.addWidget(self.mappic,1,6,4,7)
 
-		self.nodenum=QLineEdit()
-		self.nodenum.setPlaceholderText("Nodes sum")
-		self.nodenum.returnPressed.connect(self.empty)
-		self.left_layout.addWidget(self.nodenum,1,0,1,5)
+		self.nodesnum=QLineEdit()
+		self.nodesnum.setPlaceholderText("Nodes sum")
+		self.nodesnum.returnPressed.connect(self.empty)
+		self.left_layout.addWidget(self.nodesnum,1,0,1,5)
 
 		self.edgesnum=QLineEdit()
 		self.edgesnum.setPlaceholderText("Edges sum")
