@@ -25,12 +25,14 @@ class WatchWindows(QtWidgets.QMainWindow):
 
 	def ShortPath(self):
 		self.map.ShortestPath()
+		self.info.setText("The shortest path length from 0 to " + str(self.map.n) + " is " + str(self.map.dis))
 		self.mappic.clear()
 		self.map.Draw()
 		self.mappic.setPixmap(QPixmap('b.png'))
-	
+
 	def Tree(self):
 		self.map.CreateTree()
+		self.info.setText("The edge weight of the lowest spanning tree is " + str(self.map.weight))
 		self.mappic.clear()
 		self.map.Draw()
 		self.mappic.setPixmap(QPixmap('b.png'))
@@ -146,6 +148,9 @@ class WatchWindows(QtWidgets.QMainWindow):
 
 		self.mappic=QLabel()
 		self.right_layout.addWidget(self.mappic,1,6,4,7)
+		self.info=QLabel()
+		self.info.setText("")
+		self.right_layout.addWidget(self.info,0,4,1,7)
 
 		self.nodesnum=QLineEdit()
 		self.nodesnum.setPlaceholderText("Nodes sum")

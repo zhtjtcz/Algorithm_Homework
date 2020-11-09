@@ -80,7 +80,7 @@ class Map():
 						v[i]=1
 						w=(w+1)%self.n
 						z[w]=i
-		print(dis[self.n-1])
+		self.dis=dis[self.n-1]
 		x=self.n-1
 		v=[0 for i in range(self.n+1)]
 		while (x):
@@ -107,7 +107,7 @@ class Map():
 			cse[(i[0][0],i[0][1])]=1
 			self.f[x]=y
 			tot+=i[1]
-		print(tot)
+		self.weight=tot
 		self.cols=[]
 		for i in self.G.edges(data=True):
 			if ((i[0],i[1]) in cse or (i[1],i[0]) in  cse):
