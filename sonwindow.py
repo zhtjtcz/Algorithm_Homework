@@ -25,7 +25,7 @@ class WatchWindows(QtWidgets.QMainWindow):
 
 	def ShortPath(self):
 		self.map.ShortestPath()
-		self.info.setText("The shortest path length from 0 to " + str(self.map.n) + " is " + str(self.map.dis))
+		self.info.setText("The shortest path length from 0 to " + str(self.map.n-1) + " is " + str(self.map.dis))
 		self.mappic.clear()
 		self.map.Draw()
 		self.mappic.setPixmap(QPixmap('b.png'))
@@ -143,14 +143,14 @@ class WatchWindows(QtWidgets.QMainWindow):
 		#Left layout set
 
 		self.setCentralWidget(self.main_widget)
-		self.main_layout.addWidget(self.left_widget,0,0,12,5)
-		self.main_layout.addWidget(self.right_widget,0,5,12,7)
+		self.main_layout.addWidget(self.left_widget,0,0,12,2)
+		self.main_layout.addWidget(self.right_widget,0,3,12,9)
 
 		self.mappic=QLabel()
-		self.right_layout.addWidget(self.mappic,1,6,4,7)
+		self.right_layout.addWidget(self.mappic,0,4,12,12)
 		self.info=QLabel()
 		self.info.setText("")
-		self.right_layout.addWidget(self.info,0,4,1,7)
+		self.right_layout.addWidget(self.info,0,3,1,7)
 
 		self.nodesnum=QLineEdit()
 		self.nodesnum.setPlaceholderText("Nodes sum")

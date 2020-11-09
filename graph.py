@@ -118,14 +118,12 @@ class Map():
 	def Draw(self):
 		plt.cla()
 		pos=nx.spring_layout(self.G)
-		nx.draw_networkx_nodes(self.G,pos,node_color=self.node_col,node_size=500)
+		nx.draw_networkx_nodes(self.G,pos,node_color=self.node_col,node_size=300)
 		if (self.cols == []):
 			for i in self.G.edges(data=True):
 				self.cols.append(self.edge_col)
 
-		nx.draw_networkx_edges(self.G,pos,width=3,edge_color=self.cols)
-		# TODO alpha-setting
-		# TODO beautify
+		nx.draw_networkx_edges(self.G,pos,width=2,edge_color=self.cols,alpha=0.4)
 		nx.draw_networkx_labels(self.G,pos)
 		nx.draw_networkx_edge_labels(self.G, pos,self.edges_dic,font_size=10)
-		plt.savefig("b.png",format="PNG")
+		plt.savefig("b.png",format="PNG",dpi=120)
