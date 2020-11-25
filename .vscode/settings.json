@@ -66,5 +66,5 @@
 		"string.h": "c",
 		"set": "cpp"
 	},
-	"python.pythonPath": "F:\\Conda\\envs\\tc1.5\\python.exe"
+	"python.pythonPath": "F:\\Conda\\python.exe"
 }

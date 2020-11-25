@@ -1,9 +1,10 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 from random import randint
 from random import random as rand
-import cyaron
-from cyaron import *
+# from networkx.drawing.nx_pydot import to_pydot
+# import pydot
+# import graphviz
+from pylab import show
 
 class Map():
 	def __init__(self,n,m):
@@ -17,7 +18,36 @@ class Map():
 		self.edge_col='blue'
 		self.path_col='red'
 
+	def GG(self,n,m):
+		FILE=open('graph.in','w')
+		a=[[0 for i in range(n+1)] for i in range(n+1)]
+		p=(n-1)*n//2
+		while m:
+			for i in range(n):
+				for j in range(n):
+					if (a[i][j] or i==j):
+						continue
+					x=randint(0,p)
+					if (x<=m):
+						a[i][j]=a[j][i]=1
+						print(i,j,randint(1,10),file=FILE)
+						m-=1
+						if (m<=0):
+							break
+				if (m<=0):
+					break		
+		FILE.close()
+
 	def CreateNolmalMap(self):
+		self.GG(self.n,self.m)
+		File=open('graph.in','r')
+		for i in range(self.m):
+			x,y,l=map(int,File.readline().split())
+			self.G.add_edge(x,y,color=self.edge_col)
+			self.edges_dic[(x,y)]=l
+			self.edges_dic[(y,x)]=l
+		File.close()
+		'''
 		graph=Graph.graph(self.n,self.m,weight_limit=10,self_loop=False,repeated_edges=False)
 		File=open('graph.in','w')
 		print(graph,file=File)
@@ -30,7 +60,8 @@ class Map():
 			self.G.add_edge(x,y,color=self.edge_col)
 			self.edges_dic[(x,y)]=l
 			self.edges_dic[(y,x)]=l
-		
+		'''
+
 		for i in range(self.n):
 			self.G.add_edge(i,i,color=self.edge_col)
 
@@ -116,7 +147,7 @@ class Map():
 				self.cols.append(i[2]['color'])
 
 	def Draw(self):
-		plt.cla()
+		# plt.cla()
 		pos=nx.spring_layout(self.G)
 		nx.draw_networkx_nodes(self.G,pos,node_color=self.node_col,node_size=300)
 		if (self.cols == []):
@@ -126,4 +157,8 @@ class Map():
 		nx.draw_networkx_edges(self.G,pos,width=2,edge_color=self.cols,alpha=0.4)
 		nx.draw_networkx_labels(self.G,pos)
 		nx.draw_networkx_edge_labels(self.G, pos,self.edges_dic,font_size=10)
-		plt.savefig("b.png",format="PNG",dpi=120)
+		show()
+		# P=to_pydot(self.G)
+		# P.write_jpeg('b.png')
+		# nx.draw(self.G)
+		# plt.savefig("b.png",format="PNG",dpi=120)

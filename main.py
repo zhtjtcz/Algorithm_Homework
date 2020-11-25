@@ -1,6 +1,6 @@
 import sys
-from mainwin import *
 from sonwindow import *
+from PyQt5 import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 

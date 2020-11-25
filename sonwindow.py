@@ -2,13 +2,10 @@ import sys
 from graph import *
 import networkx as nx
 from PyQt5 import *
+from PyQt5 import QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
 import qdarkstyle
 
@@ -73,7 +70,7 @@ class WatchWindows(QtWidgets.QMainWindow):
 		self.toolbar.addAction(ExitAct)
 
 	def empty(self):
-		print('123')
+		print('2333')
 		pass
 
 	def btn_click(self):
